@@ -27,7 +27,7 @@ export const Posts: CollectionConfig = {
     {
       name: 'category',
       type: 'relationship',
-      relationTo: 'categories',
+      relationTo: 'categories', // ⚡ must match slug of collection
     },
   ],
 }
