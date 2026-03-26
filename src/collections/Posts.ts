@@ -1,7 +1,7 @@
 import { CollectionConfig } from 'payload'
 
 export const Posts: CollectionConfig = {
-  slug: 'posts', // The slug is the unique identifier for the collection and is used in the API routes
+  slug: 'posts',
   admin: {
     useAsTitle: 'title',
   },
@@ -12,11 +12,6 @@ export const Posts: CollectionConfig = {
       required: true,
     },
     {
-      name: 'image',
-      type: 'upload',
-      relationTo: 'media',
-    },
-    {
       name: 'content',
       type: 'textarea',
     },
@@ -25,9 +20,15 @@ export const Posts: CollectionConfig = {
       type: 'date',
     },
     {
+      name: 'featuredImage',
+      type: 'upload', // ⚡ upload image
+      relationTo: 'media', // Payload default media collection
+    },
+    {
       name: 'category',
-      type: 'relationship',
-      relationTo: 'categories', // ⚡ must match slug of collection
+      type: 'relationship', // ⚡ relation to categories
+      relationTo: 'categories', // must match slug
+      hasMany: false, // change to true if multiple categories per post
     },
   ],
 }
