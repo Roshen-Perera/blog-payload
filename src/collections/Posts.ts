@@ -24,5 +24,10 @@ export const Posts: CollectionConfig = {
       name: 'publishedAt',
       type: 'date',
     },
+    {
+      name: 'category',
+      type: 'relationship',
+      relationTo: 'categories',
+    }
   ],
 }
