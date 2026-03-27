@@ -19,7 +19,7 @@ export default async function Page() {
             <img
               src={post.featuredImage.url}
               alt={post.featuredImage.alt || post.title}
-              width={700}
+              width={600}
               height={400}
             />
           )}
