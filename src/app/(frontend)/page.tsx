@@ -1,13 +1,21 @@
 import { getPayload } from 'payload'
 import config from '@/payload.config'
-import Image from 'next/image'
+
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
 export default async function Page() {
   const payload = await getPayload({ config })
-  const posts = await payload.find({
-    collection: 'posts',
-    depth: 1, // ensures featuredImage is populated as an object
-  })
+  let posts: { docs: any[] } = { docs: [] }
+
+  try {
+    posts = await payload.find({
+      collection: 'posts',
+      depth: 1, // ensures featuredImage is populated as an object
+    })
+  } catch (error) {
+    console.error('Failed to load posts. Run Payload migrations to sync your database schema.', error)
+  }
 
   return (
     <div>
