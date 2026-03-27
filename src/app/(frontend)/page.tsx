@@ -14,7 +14,10 @@ export default async function Page() {
       depth: 1, // ensures featuredImage is populated as an object
     })
   } catch (error) {
-    console.error('Failed to load posts. Run Payload migrations to sync your database schema.', error)
+    console.error(
+      'Failed to load posts. Run Payload migrations to sync your database schema.',
+      error,
+    )
   }
 
   return (
