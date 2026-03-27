@@ -1,5 +1,6 @@
 import { getPayload } from 'payload'
 import config from '@/payload.config'
+import Image from 'next/image'
 
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
@@ -27,7 +28,7 @@ export default async function Page() {
         <div key={post.id}>
           <h2>{post.title}</h2>
           {post.featuredImage && (
-            <img
+            <Image
               src={post.featuredImage.url}
               alt={post.featuredImage.alt || post.title}
               width={600}
